@@ -9,6 +9,7 @@ private:
 public:
     enum ports_id {OP_0};
     void perform();
+    void process(DataMsg* t_msg, Port* t_port){};
     SendBoolSignal(bool);
     ~SendBoolSignal();
 };
