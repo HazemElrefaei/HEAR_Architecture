@@ -67,7 +67,7 @@ void EscCalib::process(DataMsg* t_msg, Port* t_port){
     else if(t_port->getID() == ports_id::IP_3_CHANNEL){
         uint8_t Chan = ((Int8Msg*)t_msg)->data;
         this->setChannel(Chan);
-        std::cout << "Channel" << Chan << "is selected \n";
+        std::cout << "Channel " << (int)Chan << " is selected \n";
     }
 }
 
