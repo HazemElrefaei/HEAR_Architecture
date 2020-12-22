@@ -6,6 +6,15 @@
 #include "HEAR_core/Block.hpp"
 #include "HEAR_msg/FloatMsg.hpp"
 
+/** 
+ * Block to hold the value at trigger
+ * IP_1_TRIGGER is triggered as a switch to hold value
+ * IP_O_DATA will receive the data and forward to OP_O_DATA
+ * when not triggered. Once Trigger condition is true,
+ * the value will be saved in memory and sent to output
+ * when IP_0_DATA receives a value.
+ */
+
 class HoldVal : public Block {
 private:
     DataMsg* _val;

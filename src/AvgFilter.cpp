@@ -1,6 +1,7 @@
 #include "HEAR_math/AvgFilter.hpp"
 
-AvgFilter::AvgFilter() {
+AvgFilter::AvgFilter(int _samples) {
+    this->_num_samples = _samples;
     _input_port = new InputPort(ports_id::IP_0_DATA, this);
     _output_port = new OutputPort(ports_id::OP_0_DATA, this);
     _ports = {_input_port, _output_port};

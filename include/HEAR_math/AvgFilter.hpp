@@ -7,7 +7,6 @@
 
 class AvgFilter : public Block {
 private:
-    std::function<float(float, float)> _operation;
     Port* _input_port;
     Port* _output_port;
     FloatMsg _float_msg;
@@ -15,6 +14,6 @@ private:
 public:
     enum ports_id {IP_0_DATA, OP_0_DATA};
     void process(DataMsg* t_msg, Port* t_port);
-    AvgFilter();
+    AvgFilter(int);
     ~AvgFilter();
 };
