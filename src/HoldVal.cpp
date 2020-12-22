@@ -16,9 +16,9 @@ HoldVal::~HoldVal() {
 void HoldVal::process(DataMsg* t_msg, Port* t_port) {
     if(t_port->getID() == ports_id::IP_0_DATA){
         if(!(this->hold)){
-           _val = t_msg;
+           _val.data = ((FloatMsg*)t_msg)->data;
         }
-        _output_port_0->receiveMsgData(_val);    
+        _output_port_0->receiveMsgData(&_val);    
     }
     else if(t_port->getID() == ports_id::IP_1_TRIGGER){
         this->triggerCallback(((FloatMsg*)t_msg)->data);
@@ -28,11 +28,8 @@ void HoldVal::process(DataMsg* t_msg, Port* t_port) {
 void HoldVal::triggerCallback(float t_current_value) {
     if (this->_operation(t_current_value, _trigger_value)){
         this->hold = true;
-    std::cout<< "hold triggered\n";
-
     }else{
         this->hold = false;
-    std::cout<< "hold untriggered\n";
 
     }
 }

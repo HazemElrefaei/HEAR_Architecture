@@ -17,7 +17,7 @@
 
 class HoldVal : public Block {
 private:
-    DataMsg* _val;
+    FloatMsg _val;
     std::function<bool(float,float)> _operation;
     float _trigger_value;
     Port* _input_port;
