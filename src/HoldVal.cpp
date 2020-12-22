@@ -28,8 +28,12 @@ void HoldVal::process(DataMsg* t_msg, Port* t_port) {
 void HoldVal::triggerCallback(float t_current_value) {
     if (this->_operation(t_current_value, _trigger_value)){
         this->hold = true;
+    std::cout<< "hold triggered\n";
+
     }else{
         this->hold = false;
+    std::cout<< "hold untriggered\n";
+
     }
 }
 
