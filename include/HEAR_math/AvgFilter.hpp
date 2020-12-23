@@ -9,6 +9,7 @@ class AvgFilter : public Block {
 private:
     Port* _input_port;
     Port* _output_port;
+    float _old_val;
     FloatMsg _float_msg;
     int _num_samples = 0;
 public:
