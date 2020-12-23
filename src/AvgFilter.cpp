@@ -13,8 +13,8 @@ AvgFilter::~AvgFilter() {
 
 void AvgFilter::process(DataMsg* t_msg, Port* t_port) {
     if(t_port->getID() == ports_id::IP_0_DATA) {
-        float data = ((FloatMsg*)t_msg)->data;
-        _float_msg.data = (_float_msg.data*_num_samples)/(_num_samples + 1) + data/(_num_samples+1);
+        float _in_data = ((FloatMsg*)t_msg)->data;
+        this->_float_msg.data = (this->_float_msg.data * this->_num_samples)/(this->_num_samples + 1) + _in_data/(this->_num_samples+1);
         _output_port->receiveMsgData((DataMsg*)&_float_msg);
     }
 }
