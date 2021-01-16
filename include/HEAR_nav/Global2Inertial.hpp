@@ -52,8 +52,8 @@ private:
     Vector3D<double> offsetElevation(Vector3D<double>,double);
     Vector3D<double> correctNonHomogeneousSpace(Vector3D<double> t_uncorr_pt);
 public:
-    enum ports_id {IP_0_OPTI_MSG, IP_1_FLOAT_DATA, IP_2_RTK_POS, IP_3_RTK_XSESN_POS,
-                    IP_4_RTK_XSESN_VEL, IP_5_RTK_XSESN_ORI, IP_6_CAM_Z, IP_7_CAM_EN,
+    enum ports_id {IP_0_OPTI_MSG, IP_1_FLOAT_DATA, IP_2_RTK_POS, IP_3_XSESN_POS,
+                    IP_4_XSESN_VEL, IP_5_XSESN_ORI, IP_6_CAM_Z, IP_7_CAM_EN,
                     OP_0_OPTIPOS, OP_1_OPTIHEADING, OP_2_RTK_POS_WP, OP_3_XSENS_POS,
                     OP_4_XSENS_VEL, OP_5_XSENS_ORI};
 

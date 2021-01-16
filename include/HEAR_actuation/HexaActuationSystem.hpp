@@ -6,6 +6,7 @@
 #include "HEAR_msg/FloatMsg.hpp"
 #include "HEAR_msg/VectorDoubleMsg.hpp"
 
+// Using ENU Reference Frame
 // GEOMETRY
 //      CW(3) (5)CCW                x
 //          \ /                     ↑
@@ -13,12 +14,12 @@
 //          / \              y <----+ 
 //      CW(6) (4)CCW               z up
 //
-// For Positive Roll, all motors with negative X should be increased
-// For Positive Pitch, all motors with negative Y should be increased
+// For Positive Pitch, all motors with negative X should be increased
+// For Negative Roll, all motors with negative Y should be increased
 // For Positive Yaw, all motors with CW should be increased
 // Mx = [x, y, direction, thottle]
-// POSITIVE PITCH result in moving in the direction of POSITIVE Y
-// POSITIVE ROLL result in moving in the direction of POSITIVE X
+// POSITIVE PITCH result in moving in the direction of POSITIVE X
+// NEGATIVE ROLL result in moving in the direction of POSITIVE Y
 
 class HexaActuationSystem : public ActuationSystem {
 private: 
@@ -29,12 +30,12 @@ private:
     bool _armed = false;
     float _u[4]; //[roll, pitch, yaw, throttle]
     std::vector<double> _commands {0,0,0,0,0,0};
-    float _geometry[6][4] = {{       0  * -1,   -1 * -1,  1, 1},
-                             {       0  * -1,    1 * -1, -1, 1},
-                             { 0.866025 * -1,  0.5 * -1,  1, 1},
-                             {-0.866025 * -1, -0.5 * -1, -1, 1},
-                             { 0.866025 * -1, -0.5 * -1, -1, 1},
-                             {-0.866025 * -1,  0.5 * -1,  1, 1}};
+    float _geometry[6][4] = {{-1,    0,          1,     1},
+                             { 1,    0,         -1,     1},
+                             { 0.5, -0.866025,   1,     1},
+                             {-0.5,  0.866025,  -1,     1},
+                             {-0.5, -0.866025,  -1,     1},
+                             { 0.5,  0.866025,   1,     1}};
     Port* _input_port_0;
     Port* _input_port_1;
     Port* _input_port_2;
