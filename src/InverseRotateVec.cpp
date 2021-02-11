@@ -13,7 +13,6 @@ InverseRotateVec::~InverseRotateVec(){
 
 }
 
-
 void InverseRotateVec::process(DataMsg* t_msg, Port* t_port) {
     Vector3DMsg *provider = (Vector3DMsg *)t_msg;
     if(t_port->getID() == ports_id::IP_0_VEC) {
@@ -27,7 +26,6 @@ void InverseRotateVec::process(DataMsg* t_msg, Port* t_port) {
     else if(t_port->getID() == ports_id::IP_2_PITCH) { 
         _body_orientation.y =provider->data.x;
         updateRotationMatrix();
-        
     }
     else if(t_port->getID() == ports_id::IP_3_YAW) { 
         _body_orientation.z =provider->data.x;
@@ -36,7 +34,7 @@ void InverseRotateVec::process(DataMsg* t_msg, Port* t_port) {
 
 void InverseRotateVec::updateRotationMatrix() {
     Eigen::Matrix<float, 3, 3> R_inertia;
-    R_inertia = _body_rotation_matrix.Update(_body_orientation).inverse();
+    R_inertia = _body_rotation_matrix.Update(_body_orientation).transpose();
     rotateVector(R_inertia);
 }
 

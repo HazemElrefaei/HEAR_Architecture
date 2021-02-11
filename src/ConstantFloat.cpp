@@ -4,7 +4,7 @@ ConstantFloat::ConstantFloat(float t_val) {
     this->_input_port_0 = new InputPort(ports_id::IP_0_DATA, this);
     this->_input_port_1 = new InputPort(ports_id::IP_1_TRIGGER, this);
     this->_output_port_0 = new OutputPort(ports_id::OP_0_DATA, this);
-    _ports = {_input_port_0, _output_port_0};
+    _ports = {_input_port_0,_input_port_1, _output_port_0};
     _val = t_val;
 }
 

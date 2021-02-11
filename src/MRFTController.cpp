@@ -18,7 +18,8 @@ void MRFTController::process(DataMsg* t_msg, Port* t_port) {
     } else if(t_port->getID() == ports_id::IP_1_UPDATE) {
         ControllerMsg* mrft_msg = (ControllerMsg*)t_msg;
 		MRFT_parameters params = mrft_msg->mrft_param;
-		if(params.id == this->_id){		
+		if(params.id == this->_id){	
+			std::cout<<"STARTING INITIALIZATION\n";
 			this->initialize(&params);	
 		}
     } else if(t_port->getID() == ports_id::IP_2_RESET){
