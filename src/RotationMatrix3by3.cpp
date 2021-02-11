@@ -32,6 +32,7 @@ Eigen::Matrix<float, 3, 3> RotationMatrix3by3::Update(Vector3D<float> t_input)
     Matrix3by3::v3.y =sy * sp * cr - cy * sr;
     Matrix3by3::v3.z =cp * cr;
 
+    Transpose();
     /* 
     
     Original Rotation Matrix for ENU coordinate system. 
