@@ -28,7 +28,7 @@ void Sum::process(DataMsg* t_msg, Port* t_port) {
         _p1++;
         if(_p1 > _p2){
             this->runTask();
-            if(_p1>65000) {
+            if(_p1>5) {
                 _p1 = 1; _p2 = 0;
             }
         }
@@ -40,7 +40,7 @@ void Sum::process(DataMsg* t_msg, Port* t_port) {
         _p2++;
         if(_p2 > _p1){
             this->runTask();
-            if(_p2>65000) {
+            if(_p2>5) {
                 _p1 = 0; _p2 = 1;
             }
         }
