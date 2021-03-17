@@ -16,8 +16,8 @@ class KalmanFilter : public Block {
         Port* _output_port_1;
         Port* _output_port_2;
         float _dt = float(1/200.f);
-        float _war_w = 1.0;
-        float _R_pos = 0.0002;
+        float _war_w = 5.0;
+        float _R_pos = 0.0001;
         float _pos_val=0;
         Eigen::Matrix<float, 3, 1> _x, _G;
         Eigen::Matrix<float, 3, 3> _P, _F, _Q;
