@@ -8,25 +8,21 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 catkin_package(
-  INCLUDE_DIRS include libs
+  INCLUDE_DIRS include
   LIBRARIES ${PROJECT_NAME}
   CATKIN_DEPENDS
     roscpp
 )
 
 include_directories(
-  include
-  ${CMAKE_CURRENT_SOURCE_DIR}/libs/
+  include libs
   ${catkin_INCLUDE_DIRS}
 )
 
-FILE(GLOB SOURCE_FILES *.cpp
+FILE(GLOB SOURCE_FILES
         src/*.cpp
         )
 
 add_library(${PROJECT_NAME}
 ${SOURCE_FILES}
 )
-
-add_executable(${PROJECT_NAME}_node ${SOURCE_FILES})
-target_link_libraries(${PROJECT_NAME}_node ${catkin_LIBRARIES})
