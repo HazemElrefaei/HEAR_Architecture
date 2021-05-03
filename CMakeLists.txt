@@ -7,6 +7,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
 )
 
+find_package(Boost REQUIRED)
+
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES ${PROJECT_NAME}
@@ -17,6 +19,7 @@ catkin_package(
 include_directories(
   include libs
   ${catkin_INCLUDE_DIRS}
+  ${Boost_INCLUDE_DIRS}
 )
 
 FILE(GLOB SOURCE_FILES
