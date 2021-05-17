@@ -3,7 +3,9 @@
         {
             "name": "Linux",
             "includePath": [
-                "../HEAR_Architecture/**"
+                "../HEAR_Architecture/**",
+                "/opt/ros/melodic/include/**",
+                "libs/Eigen/src/**"
             ],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c11",
