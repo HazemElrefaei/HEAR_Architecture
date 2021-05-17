@@ -3,7 +3,7 @@
 #include "HEAR_core/InputPort.hpp"
 #include "HEAR_core/OutputPort.hpp"
 #include "HEAR_msg/FloatMsg.hpp"
-#include "Vector3DMsg.hpp"
+#include "HEAR_msg/Vector3DMsg.hpp"
 #include "HEAR_msg/FloatArrayMsg.hpp"
 #include "HEAR_core/logger.hpp"
 #include <tf2/LinearMath/Matrix3x3.h>
