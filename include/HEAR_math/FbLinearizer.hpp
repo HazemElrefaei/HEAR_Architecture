@@ -19,14 +19,17 @@ private:
     Port* _input_port_3;
     Port* _input_port_4;
     Port* _input_port_5;
+    Port* _input_port_6;
     Port* _output_port_xh;
+    Port* _output_port_xh_dot;
     Port* _output_port_rot_err;
     Port* _output_port_z_com;
-    tf2::Matrix3x3 R_B_I, R_H_I;
+    tf2::Matrix3x3 R_B_I, R_H_I, R_B_des_I;
     float roll, pitch, yaw, yaw_ref;
-    tf2::Vector3 force2angles(tf2::Vector3 F_I_des);
+    tf2::Vector3 _F_I_des;
+    void force2angles(tf2::Vector3 F_I_des);
 public:
-    enum ports_id {IP_X, IP_ROLL, IP_PITCH, IP_YAW, IP_YAW_REF, IP_FHX_DES, OP_XH, OP_ROT_ERROR, OP_Z_COMMAND};
+    enum ports_id {IP_X, IP_X_DOT, IP_ROLL, IP_PITCH, IP_YAW, IP_YAW_REF, IP_FHX_DES, OP_XH, OP_XH_DOT, OP_ROT_ERROR, OP_Z_COMMAND};
     void process(DataMsg* t_msg, Port* t_port);
     FbLinearizer();
     ~FbLinearizer();
