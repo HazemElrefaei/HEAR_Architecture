@@ -55,7 +55,7 @@ void FbLinearizer::process(DataMsg* t_msg, Port* t_port){
         this->pitch = ((FloatMsg*)t_msg)->data;
         this->R_B_I.setEulerYPR(this->yaw, this->pitch, this->roll);
 
-        auto R_B_B_des = this->R_B_I.timesTranspose(R_B_des_I);
+        auto R_B_B_des = R_B_I.timesTranspose(R_B_des_I);
         tf2::Quaternion quat;
         R_B_B_des.getRotation(quat);
         auto angle = quat.getAngle();
@@ -86,6 +86,7 @@ void FbLinearizer::process(DataMsg* t_msg, Port* t_port){
         
         auto F_H_des = tf2::Vector3(msg->data.x, msg->data.y, msg->data.z);
         _F_I_des = R_H_I.transpose()*F_H_des;
+        force2angles(_F_I_des);
         
     }
 
