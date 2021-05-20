@@ -24,7 +24,7 @@ private:
     Port* _output_port_xh_dot;
     Port* _output_port_rot_err;
     Port* _output_port_z_com;
-    tf2::Matrix3x3 R_B_I, R_H_I, R_B_des_I;
+    tf2::Matrix3x3 R_I_B, R_H_I, R_B_des_I;
     float roll, pitch, yaw, yaw_ref;
     tf2::Vector3 _F_I_des;
     void force2angles(tf2::Vector3 F_I_des);

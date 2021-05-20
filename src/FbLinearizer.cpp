@@ -53,9 +53,9 @@ void FbLinearizer::process(DataMsg* t_msg, Port* t_port){
     else if(t_port->getID() == ports_id::IP_PITCH){
         
         this->pitch = ((FloatMsg*)t_msg)->data;
-        this->R_B_I.setEulerYPR(this->yaw, this->pitch, this->roll);
+        this->R_I_B.setEulerYPR(this->yaw, this->pitch, this->roll);
 
-        auto R_B_B_des = R_B_I*R_B_des_I.transpose();
+        auto R_B_B_des = R_I_B.transposeTimes(R_B_des_I.transpose()); // somehow transpose times working not the other way around
         tf2::Quaternion quat;
         R_B_B_des.getRotation(quat);
         auto angle = quat.getAngle();
@@ -63,7 +63,7 @@ void FbLinearizer::process(DataMsg* t_msg, Port* t_port){
 
         FloatMsg u_z;
         Vector3DMsg rot_err;
-        u_z.data = (this->R_B_I*_F_I_des).z();
+        u_z.data = (R_I_B.transpose()*_F_I_des).z();
         rot_err.data = Vector3D<double>({err_angles.x(), err_angles.y(), err_angles.z()});
 
         this->_output_port_z_com->receiveMsgData(&u_z);
@@ -73,7 +73,7 @@ void FbLinearizer::process(DataMsg* t_msg, Port* t_port){
     else if(t_port->getID() == ports_id::IP_YAW){
         
         this->yaw = ((FloatMsg*)t_msg)->data;
-        this->R_H_I.setEulerYPR(this->yaw, 0., 0.);    
+        this->R_H_I.setEulerYPR(-this->yaw, 0., 0.);    
     }
     else if(t_port->getID() == ports_id::IP_YAW_REF){
         
